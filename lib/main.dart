@@ -1,7 +1,14 @@
-import 'package:cropvision/features/auth/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'core/theme/app_theme.dart';
+import 'screens/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const CropVisionApp());
 }
 
@@ -12,16 +19,9 @@ class CropVisionApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CropVision Login',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4C7A4D),
-          brightness: Brightness.light,
-        ),
-        scaffoldBackgroundColor: const Color(0xFFF5F8F2),
-      ),
-      home: const LoginPage(),
+      title: 'CropVision',
+      theme: AppTheme.lightTheme,
+      home: const SplashScreen(),
     );
   }
 }
